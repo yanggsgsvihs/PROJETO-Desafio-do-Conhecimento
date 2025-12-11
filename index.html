@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz Interativo – Cyber HUD</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="hud-container">
+    <div class="hud-glow-line"></div>
+    <div class="hud-inner">
+
+      <header class="hud-header">
+        <div class="hud-title-block">
+          QUIZ SYSTEM INTERFACE
+          <h1>Interactive Knowledge Protocol</h1>
+        </div>
+        <div class="hud-meta">
+          <div class="hud-pill">ENGINEERING <span>10</span></div>
+          <div class="hud-pill">LEVEL <span id="levelDisplay">1</span></div>
+          <div class="hud-pill">XP <span id="xpDisplay">0 / 0</span></div>
+          <div class="hud-pill">CREDIT <span>15 004 251 €$</span></div>
+        </div>
+      </header>
+
+      <div class="status-bar">
+        <div class="status-item">
+          <div class="status-label">Jogador</div>
+          <div class="status-value" id="playerNameDisplay">—</div>
+        </div>
+        <div class="status-item">
+          <div class="status-label">Nível selecionado</div>
+          <div class="status-value" id="levelNameDisplay">—</div>
+        </div>
+        <div class="status-item">
+          <div class="status-label">Pontuação</div>
+          <div class="status-value emphasis" id="scoreDisplay">0</div>
+        </div>
+        <div class="status-item">
+          <div class="status-label">Tempo restante</div>
+          <div class="status-value" id="timerDisplay">—</div>
+        </div>
+      </div>
+
+      <main class="hud-main">
+        <section class="hud-left">
+          <div class="card" id="cardContainer">
+
+            <div class="card-header">
+              <div>Quiz interativo • Setup</div>
+              <div>MODE: <span>Single Run</span></div>
+            </div>
+            <div class="divider"></div>
+
+            <div class="intro-group" id="introSection">
+              <div>
+                <div class="field-label">Identificação do jogador</div>
+                <input type="text" id="playerNameInput" class="field-input" placeholder="Digite seu nome">
+              </div>
+
+              <div>
+                <div class="field-label">Selecione o nível</div>
+                <select id="levelSelect" class="field-select">
+                  <option value="">— Escolha um nível —</option>
+                  <option value="facil">Nível 1 – Iniciante</option>
+                  <option value="medio">Nível 2 – Intermediário</option>
+                  <option value="dificil">Nível 3 – Avançado</option>
+                </select>
+              </div>
+
+              <p class="helper-text">
+                Você terá <strong>5 minutos</strong> por questão. Se o tempo acabar, conta como erro.
+              </p>
+
+              <div class="actions-row">
+                <button class="btn" id="startBtn">Iniciar</button>
+              </div>
+            </div>
+
+            <div id="questionSection" style="display:none;">
+              <div class="card-header">
+                <div>Question Protocol</div>
+                <div>Q<span id="currentQuestionNumber">1</span>/<span id="totalQuestionsNumber">0</span></div>
+              </div>
+              <div class="divider"></div>
+
+              <div class="question-text" id="questionText"></div>
+              <div class="answers" id="answersContainer"></div>
+
+              <div class="actions-row">
+                <button class="btn-secondary" id="skipBtn">Pular questão</button>
+              </div>
+            </div>
+
+            <div id="resultSection" style="display:none;">
+              <div class="card-header">
+                <div>Mission Report</div>
+                <div>STATUS: <span>Completed</span></div>
+              </div>
+              <div class="divider"></div>
+
+              <h2 class="result-title">Resultado final</h2>
+              <p class="result-text" id="resultText"></p>
+
+              <div class="actions-row">
+                <button class="btn" id="restartBtn">Recomeçar</button>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <aside class="hud-right">
+          <div class="tooltip-card" id="tooltipCard">
+            <div class="tooltip-header">Quiz module spec</div>
+            <div class="tooltip-line"></div>
+
+            <div class="tooltip-label">Descrição</div>
+            <div class="tooltip-value" id="tooltipDescription">
+              Jogo interativo de perguntas e respostas.
+            </div>
+
+            <div class="tooltip-label">Modo atual</div>
+            <div class="tooltip-value" id="tooltipMode">Aguardando inicialização…</div>
+
+            <div class="tooltip-label">Parâmetros</div>
+            <div class="tooltip-value">
+              • Pontuação por acerto: <span class="tooltip-highlight">+10</span><br>
+              • Tempo por questão: <span class="tooltip-highlight">5 min</span>
+            </div>
+
+            <p class="tooltip-small" id="tooltipFlavor">
+              “O conhecimento é sua arma. Use com sabedoria.”
+            </p>
+          </div>
+        </aside>
+      </main>
+    </div>
+  </div>
+
+  <audio id="soundCorrect">
+  <source src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg" type="audio/ogg">
+</audio>
+
+<audio id="soundWrong">
+  <source src="https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg" type="audio/ogg">
+</audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
